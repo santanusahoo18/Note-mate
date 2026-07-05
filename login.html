@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Notes Mate - Access Gateway</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Log in to access undergraduate notes and SGPA calculators." />
+  <link rel="stylesheet" href="login.css" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script defer src="login.js"></script>
+</head>
+<body>
+
+  <!-- Toast Notification System -->
+  <div id="toast" class="toast">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="toast-icon"></svg>
+    <span id="toast-text">Alert message</span>
+  </div>
+
+  <main class="login-wrapper">
+    
+    <header class="logo-area">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      <span>Notes Mate <span>+3</span></span>
+    </header>
+
+    <section class="auth-card">
+      <div class="auth-tabs">
+        <button id="tab-login" class="auth-tab-btn active">Sign In</button>
+        <button id="tab-register" class="auth-tab-btn">Create Account</button>
+      </div>
+      
+      <!-- Sign In Form -->
+      <form id="login-form" class="auth-form active">
+        <h2>Welcome Back</h2>
+        <p class="auth-sub">Enter credentials to unlock undergraduate study resources.</p>
+        
+        <div class="form-group">
+          <label for="login-username">Username</label>
+          <input type="text" id="login-username" placeholder="e.g. student or admin" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" placeholder="••••••••" required />
+        </div>
+        
+        <button type="submit" class="btn btn-primary auth-submit-btn">
+          Sign In
+        </button>
+
+        <div class="divider">
+          <span>or</span>
+        </div>
+
+        <div class="google-btn-container">
+          <div id="google-signin-btn"></div>
+        </div>
+        
+        <div class="credentials-tip">
+          <p><strong>Demo Logins:</strong></p>
+          <p>👨‍🎓 Student: <code>student</code> / <code>student123</code></p>
+          <p>🛠️ Admin: <code>admin</code> / <code>admin123</code></p>
+        </div>
+      </form>
+
+      <!-- Registration Form -->
+      <form id="register-form" class="auth-form">
+        <h2>Student Registration</h2>
+        <p class="auth-sub">Sign up to get access to notes and calculators.</p>
+        
+        <div class="form-group">
+          <label for="register-username">Choose Username</label>
+          <input type="text" id="register-username" placeholder="e.g. santashow" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="register-password">Create Password</label>
+          <input type="password" id="register-password" placeholder="Minimum 6 characters" required />
+        </div>
+        
+        <button type="submit" class="btn btn-primary auth-submit-btn">
+          Register Account
+        </button>
+      </form>
+    </section>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "notes-mate",
+  "version": "1.0.0",
+  "description": "+3 Notes App with Admin Store & User Access Logs",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "optionalDependencies": {
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}

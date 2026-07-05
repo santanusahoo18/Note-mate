@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>+3 UG Auto SGPA Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calculate your undergraduate semester grade point average (SGPA) automatically for Arts, Science, and Commerce." />
+  <!-- Prelink styles -->
+  <link rel="stylesheet" href="calculator.css" />
+  <script>
+    // Session Guard
+    if (!localStorage.getItem('notes_user')) {
+      window.location.href = 'login.html';
+    }
+  </script>
+  <!-- Prelink script defer -->
+  <script defer src="calculator.js"></script>
+</head>
+<body>
+
+  <!-- Custom Alert Toast -->
+  <div id="toast" class="toast">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    <span id="toast-text">Please select all fields correctly.</span>
+  </div>
+
+  <main class="box">
+    <!-- Global Nav Profile Top Bar -->
+    <div class="top-nav" style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; margin-bottom:24px; border-bottom:1px solid var(--glass-border); font-size:0.85rem;">
+      <span style="color:var(--text-secondary);">Logged in as: <strong id="logged-user-name" style="color:var(--text-primary);">-</strong> (<span id="logged-user-role" style="color:#a855f7; text-transform:uppercase; font-weight:700; font-size:0.75rem; letter-spacing:0.05em;">-</span>)</span>
+      <button id="logout-btn" style="background:rgba(239, 68, 68, 0.1); color:#fca5a5; border:1px solid rgba(239, 68, 68, 0.2); padding:4px 8px; border-radius:6px; font-size:0.75rem; font-family:var(--font-family); font-weight:600; cursor:pointer; display:inline-flex; align-items:center; transition:all 0.2s;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        Logout
+      </button>
+    </div>
+    <!-- Header Area -->
+    <header class="header-container">
+      <div class="badge">Automatic SGPA Assessor</div>
+      <h1>+3 UG SGPA Calculator</h1>
+      <p class="subtitle">Quick & automatic semester grading assessment</p>
+    </header>
+
+    <!-- Interactive Inputs Container -->
+    <section class="form-container">
+      <div class="form-group">
+        <label for="stream">Select Stream</label>
+        <select id="stream">
+          <option value="">Select Stream</option>
+          <option value="arts">Arts</option>
+          <option value="science">Science</option>
+          <option value="commerce">Commerce</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="department">Select Department</label>
+        <select id="department">
+          <option value="">Select Department</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="major">Select Major Subject</label>
+        <select id="major">
+          <option value="">Select Major Subject</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="minor">Select Minor Subject</label>
+        <select id="minor">
+          <option value="">Select Minor Subject</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="grade">Average Grade Point for the Semester (0.00 – 10.00)</label>
+        <input id="grade" type="number" min="0" max="10" step="0.1" placeholder="Example: 8.5" />
+      </div>
+
+      <button id="calc-btn" class="calc-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Calculate SGPA
+      </button>
+    </section>
+
+    <!-- Dynamic Output Area -->
+    <section id="result-container" class="result-container">
+      <div class="result-card">
+        <div class="result-header">Estimated SGPA</div>
+        <div id="result-sgpa" class="result-sgpa-value">0.00</div>
+        <div id="result-performance" class="result-badge">Outstanding</div>
+        
+        <div class="details-grid">
+          <div class="details-item">
+            <div class="details-label">Stream</div>
+            <div id="detail-stream" class="details-value">-</div>
+          </div>
+          <div class="details-item">
+            <div class="details-label">Department</div>
+            <div id="detail-dept" class="details-value">-</div>
+          </div>
+          <div class="details-item">
+            <div class="details-label">Major Subject</div>
+            <div id="detail-major" class="details-value">-</div>
+          </div>
+          <div class="details-item">
+            <div class="details-label">Minor Subject</div>
+            <div id="detail-minor" class="details-value">-</div>
+          </div>
+          <div class="details-item" style="grid-column: span 2;">
+            <div class="details-label">Estimated Semester Credits</div>
+            <div id="detail-credits" class="details-value">-</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
